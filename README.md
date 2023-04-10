@@ -1,1 +1,2 @@
-# stock-echnange
+# stock-echnange for only practice
+
