@@ -15,7 +15,7 @@ const userSchema = new mongoose.Schema({
   role: {
     type: String,
     default: "",
-    enum: ["", "GUEST", "EMPLOYEE", "ADMIN", "CLIENT", "SUPERADMIN", "MANAGER"],
+    enum: ["", "ADMIN","USER","INSURANCE","CAMPANY"],
   },
   personalTeamId: { type: mongoose.Types.ObjectId, default: null, ref: "team" },
   isAdminAccess: { type: Boolean, default: false },
