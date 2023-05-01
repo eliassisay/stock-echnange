@@ -2,7 +2,6 @@ import { Router } from "express";
 import { UserController } from "../controllers/UserController";
 import { UserValidator } from "../validators/UserValidator";
 import { GlobalMiddleWare } from "../middlewares/GlobalMiddleWares";
-import { RoleController } from "../controllers/RoleController";
 import { Utils } from "../utils/Utils";
 import * as Express from "express";
 
@@ -60,73 +59,4 @@ userRouter.patch(
   UserValidator.verify(),
   GlobalMiddleWare.checkError,
   UserController.verify
-);
-
-userRouter.get(
-  "/getProfile",
-  GlobalMiddleWare.authenticate,
-  GlobalMiddleWare.checkError,
-  UserController.getProfile,
-  UserValidator.getProfile()
-);
-
-userRouter.get(
-  "/getUsers",
-  GlobalMiddleWare.authenticate,
-  GlobalMiddleWare.checkError,
-  UserController.getUsers,
-  UserValidator.getUsers()
-);
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////
-userRouter.post(
-  "/createRole",
-  GlobalMiddleWare.authenticate,
-  GlobalMiddleWare.checkError,
-  RoleController.createRole,
-  UserValidator.createRole()
-);
-
-userRouter.patch(
-  "/editRole/:roleId",
-  GlobalMiddleWare.authenticate,
-  GlobalMiddleWare.checkError,
-  RoleController.editRoleByAdmin,
-  UserValidator.editRoleByAdmin()
-);
-userRouter.delete(
-  "/deleteRole/:roleId",
-  GlobalMiddleWare.authenticate,
-  GlobalMiddleWare.checkError,
-  RoleController.deleteRoleByAdmin
-  // UserValidator.deleteRole()
-);
-userRouter.get(
-  "/getRoles",
-  GlobalMiddleWare.authenticate,
-  GlobalMiddleWare.checkError,
-  RoleController.getRoles
-  // UserValidator.getRoles()
-);
-
-userRouter.get(
-  "/getRoleDetails/:roleId",
-  GlobalMiddleWare.authenticate,
-  GlobalMiddleWare.checkError,
-  RoleController.getRoleById
-  // UserValidator.getRoleById
-);
-userRouter.patch(
-  "/addTeamRole/:_id/:memberId",
-  GlobalMiddleWare.authenticate,
-  UserValidator.addRole(),
-  GlobalMiddleWare.checkError,
-  RoleController.addRole
-);
-
-userRouter.patch(
-  "/editTeamRole/:_id/:memberId",
-  GlobalMiddleWare.authenticate,
-  GlobalMiddleWare.checkError,
-  RoleController.editRole
 );
